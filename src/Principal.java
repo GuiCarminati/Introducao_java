@@ -14,7 +14,7 @@ import Visao.Menu;
 public class Principal {
    
     public static void main(String[] args) {
-       System.out.println("Mensagem!!!");
+       System.out.println("Mensagem");
        Menu.exibirMenu();
     }
     
