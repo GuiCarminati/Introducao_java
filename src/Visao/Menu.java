@@ -20,12 +20,17 @@ public class Menu {
         System.out.println("O qeu voce deseja fazer?");
         
         Scanner entrada = new Scanner(System.in);
-        
-        try{ 
-            int opcao = entrada.nextInt();
-            System.out.println("O usuario digitou " +opcao);
-        }catch(Exception e){                                                    // exception classe mais abrangente
-            System.out.println("Nao deu certo porque "+e.getMessage());
+        int opcao =0;
+        do{
+            try{ 
+                opcao = Integer.parseInt(entrada.nextLine());     // nextLine le uma string e o integer.parse transforma em int 
+                System.out.println("O usuario digitou " +opcao);
+            }catch(Exception e){                                                // exception classe mais abrangente
+                System.out.println("Nao deu certo informe novamente");
+        }
+        }while(opcao != 1 && opcao != 2);
+        if(opcao ==1){
+            EquipamentoVisao.exibirFormularioCadastroEquipamento();
         }
         
     }
