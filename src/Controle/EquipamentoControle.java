@@ -5,8 +5,10 @@
  */
 package Controle;
 
+import Armazenamento.MeioArmazenamento;
 import java.util.Date;
 import Modelo.Equipamento;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +17,7 @@ import Modelo.Equipamento;
 public class EquipamentoControle {
     
     public static void receberFormularioCadastroEquipamento(String nome, String patrimonio, Date dataTerminoGarantia, Date dataAquisicao, float valor ){
-        Equipamento objetoEquipamento = new Equipamento();
+        Equipamento objetoEquipamento = new Equipamento(); // CHAMADA DO CONSTRUTOR
         objetoEquipamento.setNome(nome);
         objetoEquipamento.setPatrimonio(patrimonio);
         objetoEquipamento.setDataAquisicao(dataAquisicao);
@@ -23,5 +25,13 @@ public class EquipamentoControle {
         objetoEquipamento.setValor(valor);
         
         objetoEquipamento.salvar();
+    }
+    
+    public static ArrayList<Equipamento> obterListaEquipamentos(){
+        return Equipamento.obterLista();
+    }
+    
+    public static Equipamento obterEquipamentoPeloNumeroPatrimonio(String numeroPatrimonio){
+        return Equipamento.obterPeloNumero(numeroPatrimonio);
     }
 }

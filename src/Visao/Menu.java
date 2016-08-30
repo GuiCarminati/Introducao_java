@@ -5,8 +5,8 @@
  */
 package Visao;
 
+import Armazenamento.MeioArmazenamento;
 import java.util.Scanner;
-
 /**
  *
  * @author 5927951
@@ -14,6 +14,8 @@ import java.util.Scanner;
 public class Menu {
     public static void exibirMenu(){
         System.out.println("=== MENU PRINCIPAL ===");
+        System.out.println("Numero de Equipamentos: " +MeioArmazenamento.MEIO_ARMAZENAMENTO_EQUIPAMENTOS.size());
+        
         System.out.println("Selecione a opção:");
         System.out.println("1) Cadastrar equipamento");
         System.out.println("2) Listagem de equipamentos");
@@ -25,13 +27,15 @@ public class Menu {
             try{                                                  // FUNÇÃO DE VERIFICAÇÃO 
                 opcao = Integer.parseInt(entrada.nextLine());     // nextLine le uma string e o integer.parse transforma em int 
                 System.out.println("O usuario digitou " +opcao);
-            }catch(Exception e){                                  //USA A CLASSE EXCEPTION PARA RECEBER QUALQUER VALOR
-                System.out.println("Nao deu certo informe novamente"); // ENTRA NO CATCH SE NAO FOR POSSIVEL COVERTER O VALOR DIGITADO PARA INT
-        }
+            }catch(Exception e){                                        //USA A CLASSE EXCEPTION PARA RECEBER QUALQUER VALOR
+                System.out.println("Nao deu certo informe novamente"); // ENTRA NO CATCH SE NAO FOR POSSIVEL COVERTER 
+        }                                                              // O VALOR DIGITADO PARA INT
         }while(opcao != 1 && opcao != 2);
         if(opcao ==1){
             EquipamentoVisao.exibirFormularioCadastroEquipamento();
         }
-        
+        if(opcao ==2){
+            EquipamentoVisao.exibirListagemEquipamentos();
+        }
     }
 }

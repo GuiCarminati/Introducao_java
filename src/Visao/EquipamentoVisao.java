@@ -5,7 +5,10 @@
  */
 package Visao;
  
+import Controle.EquipamentoControle;
+import Modelo.Equipamento;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -62,6 +65,36 @@ public class EquipamentoVisao {
             }
         }while(true);
             
+        EquipamentoControle.receberFormularioCadastroEquipamento(nome, patrimonio, dataTerminoGarantia, dataAquisicao, valor);
+        Menu.exibirMenu();        
+    }
+    
+    public static void exibirListagemEquipamentos(){
+        System.out.println("=== TELA DE LISTAGEM DE EQUIPAMENTOS ===");
+        System.out.println("Nome: \t Numero do Patrimonio: \t Numero de Manutenções ");
         
+        ArrayList<Equipamento> lista = EquipamentoControle.obterListaEquipamentos();
+        for(int i=0; i<lista.size();i++){
+            System.out.println(lista.get(i).getNome()+"\t"+lista.get(i).getDataAquisicao()+"\t"+lista.get(i).getListaManutencao().size());
+        }
+        System.out.println("O que deseja fazer?");
+        System.out.println("0) Voltar ao menu");
+        System.out.println("Número do patrimônio) Cadastrar manutenção para o equipamento");
+        
+        Scanner entrada = new Scanner(System.in);
+        String valorDigitado = entrada.nextLine();
+        
+        if(entrada.equals("0")){
+            Menu.exibirMenu();
+        }else{
+            Equipamento encontrado = EquipamentoControle.obterEquipamentoPeloNumeroPatrimonio(valorDigitado);
+            if(encontrado == null){
+               System.out.println("ERRO! Equipamento não encontrado");
+               Menu.exibirMenu();
+            }else{
+                
+            }
+        }
+   
     }
 }
