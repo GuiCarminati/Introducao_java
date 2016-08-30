@@ -22,9 +22,8 @@ public class EquipamentoVisao {
         Date dataAquisicao, dataTerminoGarantia;
         float valor;
         
-        
         System.out.println("Informe o nome");
-        nome = entrada.nextLine();
+        nome = entrada.nextLine();                                              // LEITURA COMO STRING
         System.out.println("Informe o numero de patrimonio");
         patrimonio = entrada.nextLine();
         System.out.println("Informe a data de aquisicao");
@@ -32,7 +31,7 @@ public class EquipamentoVisao {
         formatadorData.setLenient(false);
         do{
         try{
-            dataAquisicao = formatadorData.parse(entrada.nextLine());
+            dataAquisicao = formatadorData.parse(entrada.nextLine());           // VERIFICA SE É O FORMATO CORRETO PARA A DATA
             break;
         }catch(Exception e){
             System.out.println("Data invalida. Digite Novamente");
@@ -43,12 +42,11 @@ public class EquipamentoVisao {
         do{
             try{
                 dataTerminoGarantia = formatadorData.parse(entrada.nextLine());
-                if(dataTerminoGarantia.after(dataAquisicao)){
+                if(dataTerminoGarantia.after(dataAquisicao)){  //VERIFICA SE A DATA DA GARANTIA É MAIOR DO Q A DATA DE AQUISIÇÃO
                     break;
                 }else{
                     System.out.println("Data de garantia deve ser maior do que data de aquisicao");
                 }
-                
             }catch(Exception e){
                 System.out.println("Data invalida. Digite Novamente");
             }
