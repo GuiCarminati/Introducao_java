@@ -45,7 +45,7 @@ public class EquipamentoVisao {
         do{
             try{
                 dataTerminoGarantia = formatadorData.parse(entrada.nextLine());
-                if(dataTerminoGarantia.after(dataAquisicao)){  //VERIFICA SE A DATA DA GARANTIA É MAIOR DO Q A DATA DE AQUISIÇÃO
+                if(dataTerminoGarantia.after(dataAquisicao)){ //VERIFICA SE A DATA DA GARANTIA É MAIOR DO Q A DATA DE AQUISIÇÃO
                     break;
                 }else{
                     System.out.println("Data de garantia deve ser maior do que data de aquisicao");
@@ -71,11 +71,11 @@ public class EquipamentoVisao {
     
     public static void exibirListagemEquipamentos(){
         System.out.println("=== TELA DE LISTAGEM DE EQUIPAMENTOS ===");
-        System.out.println("Nome: \t Numero do Patrimonio: \t Numero de Manutenções ");
+        System.out.println("Nome: \t Numero do Patrimonio: \t Numero de Manutenções \t Gasto com Manutenções ");
         
         ArrayList<Equipamento> lista = EquipamentoControle.obterListaEquipamentos();
         for(int i=0; i<lista.size();i++){
-            System.out.println(lista.get(i).getNome()+"\t"+lista.get(i).getDataAquisicao()+"\t"+lista.get(i).getListaManutencao().size());
+            System.out.println(lista.get(i).getNome()+"\t"+lista.get(i).getPatrimonio()+"\t"+lista.get(i).getListaManutencao().size()+"\t"+lista.get(i).getTotalGastoManutencoes());
         }
         System.out.println("O que deseja fazer?");
         System.out.println("0) Voltar ao menu");
@@ -92,7 +92,7 @@ public class EquipamentoVisao {
                System.out.println("ERRO! Equipamento não encontrado");
                Menu.exibirMenu();
             }else{
-                
+                ManutencaoVisao.exibirFormularioCadastroManutencao(valorDigitado);
             }
         }
    

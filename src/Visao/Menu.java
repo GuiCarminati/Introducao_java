@@ -13,29 +13,32 @@ import java.util.Scanner;
  */
 public class Menu {
     public static void exibirMenu(){
-        System.out.println("=== MENU PRINCIPAL ===");
-        System.out.println("Numero de Equipamentos: " +MeioArmazenamento.MEIO_ARMAZENAMENTO_EQUIPAMENTOS.size());
-        
-        System.out.println("Selecione a opção:");
-        System.out.println("1) Cadastrar equipamento");
-        System.out.println("2) Listagem de equipamentos");
-        
-        Scanner entrada = new Scanner(System.in);
-        int opcao =0;
         do{
-            System.out.println("O que voce deseja fazer?");
-            try{                                                  // FUNÇÃO DE VERIFICAÇÃO 
-                opcao = Integer.parseInt(entrada.nextLine());     // nextLine le uma string e o integer.parse transforma em int 
-                System.out.println("O usuario digitou " +opcao);
-            }catch(Exception e){                                        //USA A CLASSE EXCEPTION PARA RECEBER QUALQUER VALOR
-                System.out.println("Nao deu certo informe novamente"); // ENTRA NO CATCH SE NAO FOR POSSIVEL COVERTER 
-        }                                                              // O VALOR DIGITADO PARA INT
-        }while(opcao != 1 && opcao != 2);
-        if(opcao ==1){
-            EquipamentoVisao.exibirFormularioCadastroEquipamento();
-        }
-        if(opcao ==2){
-            EquipamentoVisao.exibirListagemEquipamentos();
-        }
+            System.out.println("==== MENU PRINCIPAL ====");
+            System.out.println("Número de equipamentos: "+MeioArmazenamento.MEIO_ARMAZENAMENTO_EQUIPAMENTOS.size());
+
+            System.out.println("Seleciona a opção:");
+            System.out.println("1) Cadastro equipamento");
+            System.out.println("2) Listagem de equipamentos");
+            System.out.println("Outro valor) Sair");
+            System.out.println("\nO que você deseja fazer?");
+
+            Scanner entrada = new Scanner( System.in );
+            int opcao = 0;
+            try{
+                opcao = Integer.parseInt(entrada.nextLine());
+                System.out.println("O usuario digitou "+opcao);
+            }catch(Exception e){
+                System.out.println("Não foi possível converter para inteiro");
+            }
+            if(opcao == 1){
+                EquipamentoVisao.exibirFormularioCadastroEquipamento();
+            }else if(opcao == 2){
+                EquipamentoVisao.exibirListagemEquipamentos();
+            }else{
+                System.exit(0);
+            }
+        }while(true);
+        
     }
 }
