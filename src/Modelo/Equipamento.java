@@ -6,6 +6,11 @@
 package Modelo;
 
 import Armazenamento.MeioArmazenamento;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -37,8 +42,18 @@ public class Equipamento {
     }
     
     public void salvar(){
-        MeioArmazenamento.MEIO_ARMAZENAMENTO_EQUIPAMENTOS.add(this);
+        //MeioArmazenamento.MEIO_ARMAZENAMENTO_EQUIPAMENTOS.add(this);
+        try{
+            Path caminhoArquivo = Paths.get("Equipamento.txt");
+            String linhaEquip;
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            linhaEquip =(this.getNome()+"; "+this.getPatrimonio()+"; "+sdf.format(this.getDataAquisicao())+"; "+sdf.format(this.getDataTerminoGarantia())+"; "+this.getValor()+"\r\n");
+            Files.write(caminhoArquivo, linhaEquip.getBytes(),StandardOpenOption.CREATE,StandardOpenOption.APPEND);
         
+        }catch(Exception e){
+            
+        }
+   
     }
     public ArrayList<Manutencao> getListaManutencao(){
         return this.listaManutencoes;
