@@ -66,11 +66,11 @@ public class Principal {
 //            System.out.println("Não Existe");
 //        }
 //        String linha = "Ola Mundo eu sou o Java";
-//        linha.split("; ");
+//        
         
         
         
-       //Menu.exibirMenu();
+       Menu.exibirMenu();
     }
     
 }

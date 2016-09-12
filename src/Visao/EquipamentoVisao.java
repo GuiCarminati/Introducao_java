@@ -7,6 +7,9 @@ package Visao;
  
 import Controle.EquipamentoControle;
 import Modelo.Equipamento;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -71,12 +74,25 @@ public class EquipamentoVisao {
     
     public static void exibirListagemEquipamentos(){
         System.out.println("=== TELA DE LISTAGEM DE EQUIPAMENTOS ===");
-        System.out.println("Nome: \t Numero do Patrimonio: \t Numero de Manutenções \t Gasto com Manutenções ");
+//        System.out.println("Nome: \t Numero do Patrimonio: \t Numero de Manutenções \t Gasto com Manutenções ");
+//          
+//          ArrayList<Equipamento> lista = EquipamentoControle.obterListaEquipamentos();
+//          for(int i=0; i<lista.size();i++){
+//              System.out.println(lista.get(i).getNome()+"\t"+lista.get(i).getPatrimonio()+"\t"+lista.get(i).getListaManutencao().size()+"\t"+lista.get(i).getTotalGastoManutencoes());
+//          }
+
+        System.out.println("Nome: \t Numero do Patrimonio: \t Data Inicio Garantia \t Data Termino Garantia \t Gasto com Manutenções ");
         
-        ArrayList<Equipamento> lista = EquipamentoControle.obterListaEquipamentos();
-        for(int i=0; i<lista.size();i++){
-            System.out.println(lista.get(i).getNome()+"\t"+lista.get(i).getPatrimonio()+"\t"+lista.get(i).getListaManutencao().size()+"\t"+lista.get(i).getTotalGastoManutencoes());
-        }
+        try{
+            Path caminhoArquivo = Paths.get("Equipamento.txt");
+            for(String linha : Files.readAllLines(caminhoArquivo)){
+                linha.split("; ");
+                System.out.println(linha);
+            }
+        }catch(Exception e){
+        
+        }   
+        
         System.out.println("O que deseja fazer?");
         System.out.println("0) Voltar ao menu");
         System.out.println("Número do patrimônio) Cadastrar manutenção para o equipamento");

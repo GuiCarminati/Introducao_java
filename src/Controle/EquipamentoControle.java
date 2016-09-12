@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import Modelo.Equipamento;
 import Modelo.Manutencao;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**  Classe Controle recebe os valores digitados pelo usuário
  *   Onde o objeto é instanciado com os valores fornecidos   
@@ -47,4 +50,5 @@ public class EquipamentoControle {
         //encontrado.salvar();
         //método salvar não necessário por enquanto pois, como os dados estão em memória, o próprio objeto manipulado é o mesmo do meio de armazenamento
     }
+    
 }
