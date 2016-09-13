@@ -9,6 +9,7 @@ import Armazenamento.MeioArmazenamento;
 import java.util.ArrayList;
 import java.util.Date;
 import Modelo.Equipamento;
+import Modelo.EquipamentoDAO;
 import Modelo.Manutencao;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,18 +29,36 @@ public class EquipamentoControle {
         objetoEquipamento.setDataTerminoGarantia(dataTerminoGarantia);
         objetoEquipamento.setValor(valor);
         
-        objetoEquipamento.salvar();
+        EquipamentoDAO.salvar(objetoEquipamento);
     }
     
+//    public static ArrayList obterVetor(){
+//    
+//    return Equipamento.obterListaArquivo();
+//    
+//    }
     public static ArrayList<Equipamento> obterListaEquipamentos(){
-        return Equipamento.obterLista();
+       return EquipamentoDAO.obterLista();
     }
-    
+//    public static ArrayList<Equipamento> obterListaArquivo(){
+//    
+//        ArrayList lista = new ArrayList<>();
+//        try{
+//            Path caminhoArquivo = Paths.get("Equipamento.txt");
+//            for(String linha : Files.readAllLines(caminhoArquivo)){
+//                linha.split("; ");
+//                //System.out.println(linha);
+//            }
+//        }catch(Exception e){
+//        
+//        }
+//        return lista;
+//    }
     public static Equipamento obterEquipamentoPeloNumeroPatrimonio(String numeroPatrimonio){
-        return Equipamento.obterPeloNumero(numeroPatrimonio);
+        return EquipamentoDAO.obterPeloNumero(numeroPatrimonio);
     }
     public static void receberDadosNovaManutencao(String numeroPatrimonio, String descricao, Date data, float valor){
-        Equipamento encontrado = Equipamento.obterPeloNumero(numeroPatrimonio);
+        Equipamento encontrado = EquipamentoDAO.obterPeloNumero(numeroPatrimonio);
         Manutencao novaManutencao = new Manutencao();
         novaManutencao.setData(data);
         novaManutencao.setDescricao(descricao);
