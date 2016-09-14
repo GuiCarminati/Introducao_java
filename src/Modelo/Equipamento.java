@@ -27,9 +27,11 @@ public class Equipamento {
     private Date dataAquisicao, dataTerminoGarantia;
     private float valor;
     private ArrayList<Manutencao> listaManutencoes;   //CADA EQUIPAMENTO PODE ALCANÇAR UMA LISTA DE MANUTENÇÕES PROPRIA
+    //public static int contador =0;
     
     public Equipamento(){ //CONSTRUTOR
         this.listaManutencoes = new ArrayList();
+        //contador++;
     }
   
     public ArrayList<Manutencao> getListaManutencao(){
@@ -43,7 +45,7 @@ public class Equipamento {
     
     public float getTotalGastoManutencoes(){
         float total = 0;
-        for(Manutencao atual : this.listaManutencoes){
+        for(Manutencao atual : ManutencaoDAO.obterLista(this)){
             total += atual.getValor();
         }
         return total;

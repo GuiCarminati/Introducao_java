@@ -8,6 +8,8 @@ package Visao;
 import Controle.EquipamentoControle;
 import Modelo.Equipamento;
 import Modelo.EquipamentoDAO;
+import Modelo.Manutencao;
+import Modelo.ManutencaoDAO;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -75,12 +77,21 @@ public class EquipamentoVisao {
     
     public static void exibirListagemEquipamentos(){
         System.out.println("=== TELA DE LISTAGEM DE EQUIPAMENTOS ===");
-        System.out.println("Nome: \t Numero do Patrimonio: \t Numero de Manutenções \t Gasto com Manutenções ");
-          
-          ArrayList<Equipamento> lista = EquipamentoDAO.obterLista();
-          for(int i=0; i<lista.size();i++){
-              System.out.println(lista.get(i).getNome()+"\t"+lista.get(i).getPatrimonio()+"\t"+lista.get(i).getListaManutencao().size()+"\t"+lista.get(i).getTotalGastoManutencoes());
-          }
+        System.out.println("NOME \t NÚMERO PATROMONIO \t NÚMERO MANUTENÇÕES \t TOTAL GASTO");
+        //int i=0;
+        for(Equipamento obj : EquipamentoControle.obterListaEquipamentos()){
+            ArrayList<Manutencao> listaDeManutencoes = ManutencaoDAO.obterLista(obj);
+            System.out.println(obj.getNome() + "\t " + obj.getPatrimonio()+"\t " + listaDeManutencoes.size() + "\t " + obj.getTotalGastoManutencoes());
+            //i++;
+        }
+ 
+//          ArrayList<Equipamento> lista = EquipamentoDAO.obterLista();
+//          
+//          for(int i=0; i<lista.size();i++){
+//              Equipamento obj = null;
+//              ArrayList<Manutencao> listaDeManutencoes = ManutencaoDAO.obterLista(obj);
+//              System.out.println(lista.get(i).getNome()+"\t"+lista.get(i).getPatrimonio()+"\t"+listaDeManutencoes.size()+"\t"+listaDeManutencoes.get(i).getValor());
+//          }
 //        System.out.println("Nome: \t Numero do Patrimonio: \t Data Inicio Garantia \t Data Termino Garantia \t Gasto com Manutenções ");
 //        
 //        try{

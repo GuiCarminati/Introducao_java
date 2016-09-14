@@ -11,6 +11,7 @@ import java.util.Date;
 import Modelo.Equipamento;
 import Modelo.EquipamentoDAO;
 import Modelo.Manutencao;
+import Modelo.ManutencaoDAO;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -59,13 +60,14 @@ public class EquipamentoControle {
     }
     public static void receberDadosNovaManutencao(String numeroPatrimonio, String descricao, Date data, float valor){
         Equipamento encontrado = EquipamentoDAO.obterPeloNumero(numeroPatrimonio);
+
         Manutencao novaManutencao = new Manutencao();
         novaManutencao.setData(data);
         novaManutencao.setDescricao(descricao);
         novaManutencao.setValor(valor);
         
-       
         encontrado.adicionaManutencao(novaManutencao);
+        ManutencaoDAO.salvar(encontrado);
         //encontrado.salvar();
         //método salvar não necessário por enquanto pois, como os dados estão em memória, o próprio objeto manipulado é o mesmo do meio de armazenamento
     }

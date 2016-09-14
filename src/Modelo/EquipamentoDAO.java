@@ -60,6 +60,22 @@ public class EquipamentoDAO { // DATA ACESS OBJECT
         
     } 
     
+    public static int contaObjetos(){
+        int contador =0;
+        try{
+            Path caminhoArquivo = Paths.get("Equipamento.txt");
+            if(caminhoArquivo.toFile().exists()){
+                for(String linhaAtual : Files.readAllLines(caminhoArquivo)){
+                    contador++;
+                }
+            }
+        }catch(Exception e){
+            Logger.getLogger(Equipamento.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+        
+        return contador;
+    }
 //    public static ArrayList<Equipamento> obterListaArquivo(){
 //        //ArrayList lista = new ArrayList<>();
 //        MeioArmazenamento.MEIO_ARMAZENAMENTO_EQUIPAMENTOS = new ArrayList<>();
