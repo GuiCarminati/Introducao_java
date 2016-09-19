@@ -26,7 +26,7 @@ public class ManutencaoDAO {
      public static ArrayList<Manutencao> obterLista(Equipamento equipamento){
         ArrayList<Manutencao> retorno = new ArrayList<>();
         try {
-            Path localManutencoes = Paths.get("manutencoes_equipamento_"+equipamento.getPatrimonio()+".txt");
+            Path localManutencoes = Paths.get("Armazenamento/manutencoes_equipamento_"+equipamento.getPatrimonio()+".txt");
             if(localManutencoes.toFile().exists()){
                 for(String linhaManutencao : Files.readAllLines(localManutencoes)){
                     String dadosManutencao[] = linhaManutencao.split(";");
@@ -46,7 +46,7 @@ public class ManutencaoDAO {
     
     public static void salvar(Equipamento equipamento){
         try {
-            Path local = Paths.get("manutencoes_equipamento_"+equipamento.getPatrimonio()+".txt");
+            Path local = Paths.get("Armazenamento/manutencoes_equipamento_"+equipamento.getPatrimonio()+".txt");
             String separadorLinha = System.getProperty("line.separator");
             String manutencoesString = "";
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

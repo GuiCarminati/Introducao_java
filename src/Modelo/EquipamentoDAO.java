@@ -5,7 +5,7 @@
  */
 package Modelo;
 
-import Armazenamento.MeioArmazenamento;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,7 +25,7 @@ public class EquipamentoDAO { // DATA ACESS OBJECT
     public static void salvar(Equipamento paraSalvar){
         //MeioArmazenamento.MEIO_ARMAZENAMENTO_EQUIPAMENTOS.add(this);
         try{
-            Path caminhoArquivo = Paths.get("Equipamento.txt");
+            Path caminhoArquivo = Paths.get("Armazenamento/Equipamento.txt");
             //String separadorLinha = System.getProperty("Line.separator");
             String linhaEquip;
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -40,7 +40,7 @@ public class EquipamentoDAO { // DATA ACESS OBJECT
         //return MeioArmazenamento.MEIO_ARMAZENAMENTO_EQUIPAMENTOS;
         ArrayList<Equipamento> retorno = new ArrayList<>();
         try{
-            Path caminhoArquivo = Paths.get("Equipamento.txt");
+            Path caminhoArquivo = Paths.get("Armazenamento/Equipamento.txt");
             for(String linhaAtual : Files.readAllLines(caminhoArquivo)){
                 String[] dado = linhaAtual.split(";");
                 Equipamento objeto = new Equipamento();
