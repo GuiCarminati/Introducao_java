@@ -8,7 +8,10 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.shape.Shape;
+import javafx.stage.Stage;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,7 +22,7 @@ import javafx.scene.shape.Shape;
  *
  * @author 5927951
  */
-public class Principal {
+public class Principal extends Application {
    
     public static void main(String[] args) {
 //        File arquivo = new File("teste.txt");
@@ -71,6 +74,11 @@ public class Principal {
         
         
        Menu.exibirMenu();
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        //Pane Principal = FXMLLoader.load();
     }
     
 }

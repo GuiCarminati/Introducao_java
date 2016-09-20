@@ -10,19 +10,47 @@ import Modelo.Equipamento;
 import Modelo.EquipamentoDAO;
 import Modelo.Manutencao;
 import Modelo.ManutencaoDAO;
+import java.awt.TextField;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.ResourceBundle;
 import java.util.Scanner;
+import static javafx.application.ConditionalFeature.FXML;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 /**
  *
  * @author 5927951
  */
-public class EquipamentoVisao {
+public class EquipamentoVisao implements Initializable{
+    
+    @FXML
+    private TextField txtNomeEquipamento;
+    @FXML
+    private TextField txtNumeroPatrimonio;
+    @FXML
+    private TextField txtValor;
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        //txtNomeEquipamento.setText("Olá Mundo");
+    }
+    public void onClickBotao(){
+        String nome = txtNomeEquipamento.getText();
+        String numero = txtNumeroPatrimonio.getText();
+        String valor = txtValor.getText();
+        Float valorEmFloat = Float.parseFloat(valor);
+        
+        EquipamentoControle.receberFormularioCadastroEquipamento(nome, numero, null, null, valorEmFloat);
+        
+    }
+    
     
     public static void exibirFormularioCadastroEquipamento(){
         System.out.println("=== TELA DE CADASTRO DE EQUIPAMENTO ===");
@@ -123,4 +151,6 @@ public class EquipamentoVisao {
         }
    
     }
+
+    
 }
