@@ -18,7 +18,7 @@
                   <Insets right="10.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <TextField />
+            <TextField fx:id="txtNomeEquipamento" />
          </children>
          <padding>
             <Insets bottom="10.0" />
@@ -34,7 +34,7 @@
                   <Insets bottom="10.0" />
                </padding>
             </Label>
-            <TextField />
+            <TextField fx:id="txtNumeroPatrimonio" />
          </children>
       </HBox>
       <HBox layoutX="14.0" layoutY="129.0" prefHeight="25.0" prefWidth="303.0">
@@ -50,7 +50,7 @@
             <DatePicker prefHeight="25.0" prefWidth="154.0" />
          </children>
       </HBox>
-      <Label layoutX="67.0" text="CADASTRO MANUTENÇÃO" textAlignment="CENTER" textFill="#d30f0f">
+      <Label layoutX="67.0" text="CADASTRO EQUIPAMENTO" textAlignment="CENTER" textFill="#d30f0f">
          <font>
             <Font size="23.0" />
          </font>
@@ -81,12 +81,12 @@
                   <Insets top="5.0" />
                </padding>
             </Label>
-            <TextField />
+            <TextField fx:id="txtValor" />
          </children>
          <padding>
             <Insets top="5.0" />
          </padding>
       </HBox>
-      <Button layoutX="28.0" layoutY="345.0" mnemonicParsing="false" text="SALVAR" />
+      <Button layoutX="28.0" layoutY="345.0" mnemonicParsing="false" onAction="#onClickSalvar" text="SALVAR" />
    </children>
 </AnchorPane>

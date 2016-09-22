@@ -10,7 +10,6 @@ import Modelo.Equipamento;
 import Modelo.EquipamentoDAO;
 import Modelo.Manutencao;
 import Modelo.ManutencaoDAO;
-import java.awt.TextField;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,6 +22,7 @@ import java.util.Scanner;
 import static javafx.application.ConditionalFeature.FXML;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -41,14 +41,23 @@ public class EquipamentoVisao implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         //txtNomeEquipamento.setText("Olá Mundo");
     }
-    public void onClickBotao(){
+//    public void onClickBotao(){
+//        String nome = txtNomeEquipamento.getText();
+//        String numero = txtNumeroPatrimonio.getText();
+//        String valor = txtValor.getText();
+//        Float valorEmFloat = Float.parseFloat(valor);
+//        
+//        EquipamentoControle.receberFormularioCadastroEquipamento(nome, numero, null, null, valorEmFloat);
+//        
+//    }
+    
+    public void onClickSalvar(){
+        //System.out.print("ola");
         String nome = txtNomeEquipamento.getText();
-        String numero = txtNumeroPatrimonio.getText();
+        String patrimonio = txtNumeroPatrimonio.getText();
         String valor = txtValor.getText();
-        Float valorEmFloat = Float.parseFloat(valor);
         
-        EquipamentoControle.receberFormularioCadastroEquipamento(nome, numero, null, null, valorEmFloat);
-        
+        System.out.println(nome);
     }
     
     

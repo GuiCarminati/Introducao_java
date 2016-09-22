@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 /*
@@ -73,12 +75,17 @@ public class Principal extends Application {
         
         
         
-       Menu.exibirMenu();
+       //Menu.exibirMenu();
+        launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        //Pane Principal = FXMLLoader.load();
+        Pane principal = FXMLLoader.load(getClass().getResource("Visao/MenuTela.fxml"));
+        Scene cena = new Scene(principal);
+        stage.setScene(cena); // COLOCA A CENA NO PALCO
+        //stage.setHeight(450);
+        //stage.setWidth(450);
+        stage.show();
     }
-    
 }

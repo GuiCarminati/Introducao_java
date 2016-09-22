@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="256.0" prefWidth="184.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="Visao.Menu">
+   <children>
+      <Button layoutX="10.0" layoutY="58.0" mnemonicParsing="false" onAction="#abrirTelaEquipamento" prefHeight="58.0" prefWidth="159.0" text="Equipamento" />
+      <Button layoutX="7.0" layoutY="160.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="166.0" text="Manutenção" />
+   </children>
+</AnchorPane>

@@ -7,39 +7,40 @@ package Visao;
 
 import Modelo.Equipamento;
 import Modelo.EquipamentoDAO;
+import static com.sun.jmx.mbeanserver.Util.cast;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.Scanner;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 /**
  *
  * @author 5927951
  */
-public class Menu {
-    public static void exibirMenu(){
-        do{
-            System.out.println("==== MENU PRINCIPAL ====");
-            System.out.println("Número de equipamentos: "+EquipamentoDAO.contaObjetos());
-
-            System.out.println("Seleciona a opção:");
-            System.out.println("1) Cadastro equipamento");
-            System.out.println("2) Listagem de equipamentos");
-            System.out.println("Outro valor) Sair");
-            System.out.println("\nO que você deseja fazer?");
-
-            Scanner entrada = new Scanner( System.in );
-            int opcao = 0;
-            try{
-                opcao = Integer.parseInt(entrada.nextLine());
-                System.out.println("O usuario digitou "+opcao);
-            }catch(Exception e){
-                System.out.println("Não foi possível converter para inteiro");
-            }
-            if(opcao == 1){
-                EquipamentoVisao.exibirFormularioCadastroEquipamento();
-            }else if(opcao == 2){
-                EquipamentoVisao.exibirListagemEquipamentos();
-            }else{
-                System.exit(0);
-            }
-        }while(true);
+public class Menu implements Initializable {
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         
     }
+    public void abrirTelaEquipamento(ActionEvent e) throws IOException{
+        System.out.print("oi");
+        
+        Button quemFoi =(Button) e.getSource();
+        Scene cenaAtual = quemFoi.getScene();
+        Stage palcoAtual =(Stage) cenaAtual.getWindow();
+
+        Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("EquipamentoCadastro.fxml"));
+        Scene novaCena = new Scene(elementoPrincipalDoNovoPalco);
+        palcoAtual.setScene(novaCena);
+        palcoAtual.show();
+    
+    }
+    
 }
