@@ -7,22 +7,30 @@ package Visao;
  
 import Controle.EquipamentoControle;
 import Modelo.Equipamento;
-import Modelo.EquipamentoDAO;
 import Modelo.Manutencao;
 import Modelo.ManutencaoDAO;
+import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-import static javafx.application.ConditionalFeature.FXML;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -36,6 +44,10 @@ public class EquipamentoVisao implements Initializable{
     private TextField txtNumeroPatrimonio;
     @FXML
     private TextField txtValor;
+    @FXML
+    private DatePicker dataAquisicao;
+    @FXML
+    private DatePicker dataGarantia;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -50,17 +62,47 @@ public class EquipamentoVisao implements Initializable{
 //        EquipamentoControle.receberFormularioCadastroEquipamento(nome, numero, null, null, valorEmFloat);
 //        
 //    }
-    
-    public void onClickSalvar(){
-        //System.out.print("ola");
+  
+    public void onClickSalvar(ActionEvent e) throws IOException{
         String nome = txtNomeEquipamento.getText();
         String patrimonio = txtNumeroPatrimonio.getText();
         String valor = txtValor.getText();
+        Float valorFloat = Float.parseFloat(valor); 
         
-        System.out.println(nome);
+        SimpleDateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataAquisicaoFinal = null, dataTerminoGarantia = null;
+      
+        String dataAquisicaoString = dataAquisicao.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        String dataGarantiaString = dataGarantia.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        
+        try {
+            dataAquisicaoFinal = formatadorData.parse(dataAquisicaoString);
+            
+        } catch (Exception ex) {
+            
+        }
+        try {
+            dataTerminoGarantia = formatadorData.parse(dataGarantiaString);
+        } catch (Exception ex) {
+            Logger.getLogger(EquipamentoVisao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //LEVA PARA O CONTROLE CRIAR O EQUIPAMENTO
+
+        EquipamentoControle.receberFormularioCadastroEquipamento(nome, patrimonio, dataAquisicaoFinal ,dataTerminoGarantia , valorFloat);
+        //System.out.println(dataAquisicaoFinal);
+        
+        Button quemFoi =(Button) e.getSource();
+        Scene cenaAtual = quemFoi.getScene();
+        Stage palcoAtual =(Stage) cenaAtual.getWindow();
+        
+        // RETORNO AO MENU
+        Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("MenuTela.fxml"));
+        Scene novaCena = new Scene(elementoPrincipalDoNovoPalco);
+        palcoAtual.setScene(novaCena);
+        palcoAtual.show();
+        
     }
-    
-    
     public static void exibirFormularioCadastroEquipamento(){
         System.out.println("=== TELA DE CADASTRO DE EQUIPAMENTO ===");
         Scanner  entrada = new Scanner(System.in);
@@ -108,8 +150,8 @@ public class EquipamentoVisao implements Initializable{
             }
         }while(true);
             
-        EquipamentoControle.receberFormularioCadastroEquipamento(nome, patrimonio, dataTerminoGarantia, dataAquisicao, valor);
-        Menu.exibirMenu();        
+        //EquipamentoControle.receberFormularioCadastroEquipamento(nome, patrimonio, dataTerminoGarantia, dataAquisicao, valor);
+        //Menu.exibirMenu();        
     }
     
     public static void exibirListagemEquipamentos(){
@@ -148,12 +190,12 @@ public class EquipamentoVisao implements Initializable{
         String valorDigitado = entrada.nextLine();
         
         if(entrada.equals("0")){
-            Menu.exibirMenu();
+            //Menu.exibirMenu();
         }else{
             Equipamento encontrado = EquipamentoControle.obterEquipamentoPeloNumeroPatrimonio(valorDigitado);
             if(encontrado == null){
                System.out.println("ERRO! Equipamento não encontrado");
-               Menu.exibirMenu();
+               //Menu.exibirMenu();
             }else{
                 ManutencaoVisao.exibirFormularioCadastroManutencao(valorDigitado);
             }

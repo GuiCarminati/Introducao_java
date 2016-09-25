@@ -30,13 +30,24 @@ public class Menu implements Initializable {
         
     }
     public void abrirTelaEquipamento(ActionEvent e) throws IOException{
-        System.out.print("oi");
         
         Button quemFoi =(Button) e.getSource();
         Scene cenaAtual = quemFoi.getScene();
         Stage palcoAtual =(Stage) cenaAtual.getWindow();
 
         Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("EquipamentoCadastro.fxml"));
+        Scene novaCena = new Scene(elementoPrincipalDoNovoPalco);
+        palcoAtual.setScene(novaCena);
+        palcoAtual.show();
+    
+    }
+    public void abrirTelaManutencao(ActionEvent e) throws IOException{
+        
+        Button quemFoi =(Button) e.getSource();
+        Scene cenaAtual = quemFoi.getScene();
+        Stage palcoAtual =(Stage) cenaAtual.getWindow();
+
+        Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("ManutencaoCadastro.fxml"));
         Scene novaCena = new Scene(elementoPrincipalDoNovoPalco);
         palcoAtual.setScene(novaCena);
         palcoAtual.show();

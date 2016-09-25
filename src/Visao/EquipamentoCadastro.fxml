@@ -47,7 +47,7 @@
                   <Insets bottom="10.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <DatePicker prefHeight="25.0" prefWidth="154.0" />
+            <DatePicker fx:id="dataAquisicao" prefHeight="25.0" prefWidth="154.0" />
          </children>
       </HBox>
       <Label layoutX="67.0" text="CADASTRO EQUIPAMENTO" textAlignment="CENTER" textFill="#d30f0f">
@@ -68,7 +68,7 @@
                   <Insets left="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <DatePicker />
+            <DatePicker fx:id="dataGarantia" />
          </children>
       </HBox>
       <HBox layoutX="14.0" layoutY="200.0" prefHeight="35.0" prefWidth="200.0">
