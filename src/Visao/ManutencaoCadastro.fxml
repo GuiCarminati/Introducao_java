@@ -69,6 +69,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="48.0" layoutY="327.0" mnemonicParsing="false" onAction="#onClickSalvarManutencao" text="SALVAR" />
+      <Button layoutX="503.0" layoutY="341.0" mnemonicParsing="false" onAction="#onClickSalvarManutencao" text="SALVAR" />
+      <Button layoutX="32.0" layoutY="341.0" mnemonicParsing="false" onAction="#voltaMenu" text="VOLTAR" />
    </children>
 </AnchorPane>

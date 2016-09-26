@@ -87,6 +87,7 @@
             <Insets top="5.0" />
          </padding>
       </HBox>
-      <Button layoutX="28.0" layoutY="345.0" mnemonicParsing="false" onAction="#onClickSalvar" text="SALVAR" />
+      <Button layoutX="299.0" layoutY="347.0" mnemonicParsing="false" onAction="#onClickSalvar" text="SALVAR" />
+      <Button layoutX="41.0" layoutY="347.0" mnemonicParsing="false" onAction="#voltaMenu" text="VOLTAR" />
    </children>
 </AnchorPane>

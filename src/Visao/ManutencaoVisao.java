@@ -12,9 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import javafx.collections.FXCollections;
@@ -30,7 +28,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javax.swing.JComboBox;
 /**
  *
  * @author 5927951
@@ -55,6 +52,18 @@ public class ManutencaoVisao implements Initializable {
         }
         txtListaEquipamentos.setItems(listaEquimanetosDados);
     }
+    public void voltaMenu(ActionEvent e) throws IOException{
+    
+        Button quemFoi =(Button) e.getSource();
+        Scene cenaAtual = quemFoi.getScene();
+        Stage palcoAtual =(Stage) cenaAtual.getWindow();
+        
+        // RETORNO AO MENU
+        Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("MenuTela.fxml"));
+        Scene novaCena = new Scene(elementoPrincipalDoNovoPalco);
+        palcoAtual.setScene(novaCena);
+        palcoAtual.show();
+    } 
     
    public void onClickSalvarManutencao(ActionEvent e) throws IOException{
         String descricao = txtDescricao.getText();
@@ -74,16 +83,7 @@ public class ManutencaoVisao implements Initializable {
             
         }
         EquipamentoControle.receberDadosNovaManutencao(numeroPatrimonio, descricao, dataManutencaoFinal, valorFloat);
-        
-         Button quemFoi =(Button) e.getSource();
-        Scene cenaAtual = quemFoi.getScene();
-        Stage palcoAtual =(Stage) cenaAtual.getWindow();
-        
-        // RETORNO AO MENU
-        Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("MenuTela.fxml"));
-        Scene novaCena = new Scene(elementoPrincipalDoNovoPalco);
-        palcoAtual.setScene(novaCena);
-        palcoAtual.show();
+      
     }
     
    public static void exibirFormularioCadastroManutencao(String numeroPatrimonio){

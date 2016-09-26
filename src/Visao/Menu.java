@@ -53,5 +53,5 @@ public class Menu implements Initializable {
         palcoAtual.show();
     
     }
-    
+  
 }

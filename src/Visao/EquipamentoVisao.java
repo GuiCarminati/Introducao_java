@@ -62,7 +62,18 @@ public class EquipamentoVisao implements Initializable{
 //        EquipamentoControle.receberFormularioCadastroEquipamento(nome, numero, null, null, valorEmFloat);
 //        
 //    }
-  
+  public void voltaMenu(ActionEvent e) throws IOException{
+    
+        Button quemFoi =(Button) e.getSource();
+        Scene cenaAtual = quemFoi.getScene();
+        Stage palcoAtual =(Stage) cenaAtual.getWindow();
+        
+        // RETORNO AO MENU
+        Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("MenuTela.fxml"));
+        Scene novaCena = new Scene(elementoPrincipalDoNovoPalco);
+        palcoAtual.setScene(novaCena);
+        palcoAtual.show();
+    } 
     public void onClickSalvar(ActionEvent e) throws IOException{
         String nome = txtNomeEquipamento.getText();
         String patrimonio = txtNumeroPatrimonio.getText();
@@ -92,17 +103,9 @@ public class EquipamentoVisao implements Initializable{
         EquipamentoControle.receberFormularioCadastroEquipamento(nome, patrimonio, dataAquisicaoFinal ,dataTerminoGarantia , valorFloat);
         //System.out.println(dataAquisicaoFinal);
         
-        Button quemFoi =(Button) e.getSource();
-        Scene cenaAtual = quemFoi.getScene();
-        Stage palcoAtual =(Stage) cenaAtual.getWindow();
-        
-        // RETORNO AO MENU
-        Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("MenuTela.fxml"));
-        Scene novaCena = new Scene(elementoPrincipalDoNovoPalco);
-        palcoAtual.setScene(novaCena);
-        palcoAtual.show();
-        
     }
+    
+    
     public static void exibirFormularioCadastroEquipamento(){
         System.out.println("=== TELA DE CADASTRO DE EQUIPAMENTO ===");
         Scanner  entrada = new Scanner(System.in);
