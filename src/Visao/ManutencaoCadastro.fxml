@@ -11,23 +11,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Visao.ManutencaoVisao">
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Visao.ManutencaoVisao">
    <children>
-      <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="143.0" layoutY="14.0" text="CADASTRO MANUTENÇÃO" textAlignment="CENTER" textFill="#e41b1b">
+      <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="51.0" layoutY="23.0" text="CADASTRO MANUTENÇÃO" textAlignment="CENTER" textFill="#e41b1b">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <VBox layoutX="17.0" layoutY="50.0" prefHeight="200.0" prefWidth="566.0">
+      <VBox layoutX="17.0" layoutY="67.0" prefHeight="183.0" prefWidth="377.0">
          <children>
-            <HBox prefHeight="37.0" prefWidth="566.0">
+            <HBox prefHeight="37.0" prefWidth="544.0">
                <children>
                   <Label text="Selecione o Equipamento">
                      <padding>
                         <Insets right="10.0" top="5.0" />
                      </padding>
                   </Label>
-                  <ComboBox fx:id="txtListaEquipamentos" prefWidth="150.0" />
+                  <ComboBox fx:id="txtListaEquipamentos" prefHeight="25.0" prefWidth="154.0" />
                </children>
                <padding>
                   <Insets top="5.0" />
@@ -40,9 +40,9 @@
                         <Insets bottom="10.0" left="5.0" right="10.0" top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="txtDescricao">
+                  <TextField fx:id="txtDescricao" prefHeight="25.0" prefWidth="154.0">
                      <HBox.margin>
-                        <Insets top="5.0" />
+                        <Insets left="23.0" top="5.0" />
                      </HBox.margin>
                   </TextField>
                </children>
@@ -54,22 +54,31 @@
                         <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <DatePicker fx:id="dataManutencao" />
+                  <DatePicker fx:id="dataManutencao" prefHeight="25.0" prefWidth="155.0">
+                     <HBox.margin>
+                        <Insets left="49.0" />
+                     </HBox.margin></DatePicker>
                </children>
             </HBox>
             <HBox prefHeight="39.0" prefWidth="566.0">
                <children>
                   <Label text="Informe o Valor">
                      <padding>
-                        <Insets right="10.0" top="5.0" />
+                        <Insets left="5.0" right="10.0" top="5.0" />
                      </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </Label>
-                  <TextField fx:id="txtValorManutencao" />
+                  <TextField fx:id="txtValorManutencao" prefHeight="25.0" prefWidth="156.0">
+                     <HBox.margin>
+                        <Insets left="45.0" />
+                     </HBox.margin></TextField>
                </children>
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="503.0" layoutY="341.0" mnemonicParsing="false" onAction="#onClickSalvarManutencao" text="SALVAR" />
-      <Button layoutX="32.0" layoutY="341.0" mnemonicParsing="false" onAction="#voltaMenu" text="VOLTAR" />
+      <Button layoutX="266.0" layoutY="250.0" mnemonicParsing="false" onAction="#onClickSalvarManutencao" text="SALVAR" />
+      <Button layoutX="32.0" layoutY="250.0" mnemonicParsing="false" onAction="#voltaMenu" text="VOLTAR" />
    </children>
 </AnchorPane>

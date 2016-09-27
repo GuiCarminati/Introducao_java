@@ -11,9 +11,7 @@ import Modelo.Manutencao;
 import Modelo.ManutencaoDAO;
 import java.io.IOException;
 import java.net.URL;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -74,11 +73,13 @@ public class EquipamentoVisao implements Initializable{
         palcoAtual.setScene(novaCena);
         palcoAtual.show();
     } 
-    public void onClickSalvar(ActionEvent e) throws IOException{
+    public void onClickSalvar() throws IOException{
         String nome = txtNomeEquipamento.getText();
         String patrimonio = txtNumeroPatrimonio.getText();
         String valor = txtValor.getText();
         Float valorFloat = Float.parseFloat(valor); 
+        
+        //TRANSFORMAR localDate em Instatnt
         
         SimpleDateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy");
         Date dataAquisicaoFinal = null, dataTerminoGarantia = null;
@@ -100,12 +101,25 @@ public class EquipamentoVisao implements Initializable{
         
         //LEVA PARA O CONTROLE CRIAR O EQUIPAMENTO
 
-        EquipamentoControle.receberFormularioCadastroEquipamento(nome, patrimonio, dataAquisicaoFinal ,dataTerminoGarantia , valorFloat);
         //System.out.println(dataAquisicaoFinal);
         
+        if(dataTerminoGarantia.before(dataAquisicaoFinal)){
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("ERRO");
+            alerta.setContentText("Data de Aquisicão Menor que a data do Término de garantia");
+            alerta.showAndWait();
+        
+        }else    
+        if(dataAquisicaoFinal.after(new Date())){
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("ERRO");
+            alerta.setContentText("Data de Aquisição ainda não chegou");
+            alerta.showAndWait();
+        }else{
+            EquipamentoControle.receberFormularioCadastroEquipamento(nome, patrimonio, dataAquisicaoFinal ,dataTerminoGarantia , valorFloat);
+        }
     }
-    
-    
+      
     public static void exibirFormularioCadastroEquipamento(){
         System.out.println("=== TELA DE CADASTRO DE EQUIPAMENTO ===");
         Scanner  entrada = new Scanner(System.in);

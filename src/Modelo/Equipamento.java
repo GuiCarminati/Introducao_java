@@ -121,6 +121,6 @@ public class Equipamento {
     }
     @Override
     public String toString() {
-        return this.nome;
+        return this.nome+" - "+this.patrimonio;
     }
 }
