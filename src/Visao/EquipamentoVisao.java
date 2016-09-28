@@ -7,6 +7,7 @@ package Visao;
  
 import Controle.EquipamentoControle;
 import Modelo.Equipamento;
+import Modelo.EquipamentoDAO;
 import Modelo.Manutencao;
 import Modelo.ManutencaoDAO;
 import java.io.IOException;
@@ -103,12 +104,18 @@ public class EquipamentoVisao implements Initializable{
 
         //System.out.println(dataAquisicaoFinal);
         
+        if(!EquipamentoDAO.verficaPatrimonio(patrimonio)){
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("ERRO");
+            alerta.setContentText("Numero de Patrimonio ja existe");
+            alerta.showAndWait();
+        
+        }else    
         if(dataTerminoGarantia.before(dataAquisicaoFinal)){
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
             alerta.setTitle("ERRO");
             alerta.setContentText("Data de Aquisicão Menor que a data do Término de garantia");
             alerta.showAndWait();
-        
         }else    
         if(dataAquisicaoFinal.after(new Date())){
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);

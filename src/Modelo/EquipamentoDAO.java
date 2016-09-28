@@ -76,6 +76,18 @@ public class EquipamentoDAO { // DATA ACESS OBJECT
         
         return contador;
     }
+    public static boolean verficaPatrimonio(String patrimonio){
+    String compara;
+        for(int i=0;i<EquipamentoDAO.obterLista().size();i++){
+            compara = EquipamentoDAO.obterLista().get(i).getPatrimonio();
+            if(patrimonio.equalsIgnoreCase(compara)){
+                return false;
+            }
+    } return true;
+        
+    }
+
+    
 //    public static ArrayList<Equipamento> obterListaArquivo(){
 //        //ArrayList lista = new ArrayList<>();
 //        MeioArmazenamento.MEIO_ARMAZENAMENTO_EQUIPAMENTOS = new ArrayList<>();

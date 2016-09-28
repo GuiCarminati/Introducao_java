@@ -53,5 +53,13 @@ public class Menu implements Initializable {
         palcoAtual.show();
     
     }
+    public void onClickListagemEquipamento(ActionEvent event) throws IOException{
+        Button botaoQueClicou = (Button) event.getSource();
+        Stage palco = (Stage) botaoQueClicou.getScene().getWindow();
+        Pane principal = FXMLLoader.load(getClass().getResource("ListaEquipamentosTela.fxml"));
+        Scene novaCena = new Scene(principal);
+        palco.setScene(novaCena);
+        palco.show();
+    }    
   
 }

@@ -5,14 +5,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Visao.Menu">
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Visao.Menu">
    <children>
-      <Button layoutX="113.0" layoutY="81.0" mnemonicParsing="false" onAction="#abrirTelaEquipamento" prefHeight="58.0" prefWidth="159.0" text="Cadastrar Equipamento" />
-      <Button layoutX="110.0" layoutY="169.0" mnemonicParsing="false" onAction="#abrirTelaManutencao" prefHeight="58.0" prefWidth="166.0" text="Cadastrar Manutenção" />
-      <Label layoutX="124.0" layoutY="21.0" text="MENU PRINCIPAL" textFill="#cd1414">
+      <Button layoutX="71.0" layoutY="63.0" mnemonicParsing="false" onAction="#abrirTelaEquipamento" prefHeight="50.0" prefWidth="160.0" text="Cadastrar Equipamento" />
+      <Button layoutX="71.0" layoutY="135.0" mnemonicParsing="false" onAction="#abrirTelaManutencao" prefHeight="50.0" prefWidth="160.0" text="Cadastrar Manutenção" />
+      <Label layoutX="79.0" layoutY="21.0" text="MENU PRINCIPAL" textFill="#cd1414">
          <font>
             <Font name="Microsoft Yi Baiti" size="25.0" />
          </font>
       </Label>
+      <Button layoutX="71.0" layoutY="204.0" mnemonicParsing="false" onAction="#onClickListagemEquipamento" prefHeight="50.0" prefWidth="160.0" text="Lista De Equipamentos " />
    </children>
 </AnchorPane>
